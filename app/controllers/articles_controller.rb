@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate, except: [:index, :show]
+  before_action :authenticate, except: [:index, :show, :notify_friend]
   before_action :set_article, only: [:show, :notify_friend]
   # GET /articles
   # GET /articles.json
@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @email_a_friend = EmailAFriend.new
   end
   # GET /articles/new
   def new
@@ -57,8 +58,14 @@ class ArticlesController < ApplicationController
     end
   end
   def notify_friend
-    NotifierMailer.email_friend(@article, params[:name], params[:email]).deliver_later
-    redirect_to @article, notice: 'Successfully sent a message to your friend'
+    @email_a_friend = EmailAFriend.new(email_a_friend_params)
+
+    if @email_a_friend.valid?
+      NotifierMailer.email_friend(@article, @email_a_friend.name, @email_a_friend.email).deliver_later
+      redirect_to @article, notice: 'Succesfully sent a message to your friend'
+    else
+      render :notify_friend, status: :unprocessable_entity
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -68,5 +75,9 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :cover_image, :remove_cover_image, :location, :excerpt, :body, :published_at, category_ids: [])
+    end
+
+    def email_a_friend_params
+      params.require(:email_a_friend).permit(:name, :email)
     end
 end

@@ -6,6 +6,7 @@ class Article < ApplicationRecord
   has_one_attached :cover_image
   attr_accessor :remove_cover_image
   after_save { cover_image.purge if remove_cover_image == '1' }
+  has_rich_text :body
   scope :published, -> { where.not(published_at: nil) }
   scope :draft, -> { where(published_at: nil) }
   scope :recent, -> { where('articles.published_at > ?', 1.week.ago.to_date) }

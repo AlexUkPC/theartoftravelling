@@ -7,6 +7,6 @@ class Comment < ApplicationRecord
     errors.add(:article_id, 'is not published yet') if article && !article.published?
   end
   def email_article_author
-    puts "We will notify #{article.user.email} in Chapter 12" if article.user
+    NotifierMailer.comment_added(self).deliver
   end
 end

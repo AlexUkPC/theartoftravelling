@@ -14,6 +14,7 @@ has_many :articles, -> { order "published_at DESC, title ASC" },
     #dependent: :destroy #if you want to delete all articles belong to user when the user is deleted
     dependent: :nullify
 has_many :replies, through: :articles, source: :comments
+has_secure_token :draft_article_token
 before_save :encrypt_new_password
 
 def self.authenticate(email, password)
@@ -24,7 +25,9 @@ end
 def authenticated?(password)
     self.hashed_password == encrypt(password)
 end
-
+def draft_article_email
+    "#{draft_article_token}@drafts.example.com"
+end
 protected
 
 def encrypt_new_password

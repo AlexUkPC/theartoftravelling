@@ -5,7 +5,7 @@ class DraftArticlesMailbox < ApplicationMailbox
       title: mail.subject,
       body: mail.body,
     )
-    DraftArticlesMailer.created(mail.from, article).deliver_later
+    DraftArticlesMailer.created(mail.from, article).deliver_later 
   end
   private
   def require_author

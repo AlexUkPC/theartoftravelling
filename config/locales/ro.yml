@@ -1,0 +1,186 @@
+ro:
+  general:
+    are_you_sure: Esti sigur?
+    back: Inapoi
+    cancel: Anuleaza
+    create: Creaza
+    delete: Sterge
+    edit: Editeaza
+    editing: In editare
+    footer: Un blog despre calatorii si nu numai
+    email_a_friend: Trimite pe email unui prieten
+    search: Cauta
+    send_email: Trimite email
+    show: Arata
+    title: The Art of Travelling
+    update: Actualizeaza
+    your_name: Numele tau
+    your_friend_email: Adresa de email a prietenului
+    or: sau
+  application:
+    access_denied: "Te rugam sa te autentifici pentru a continua"
+  helpers:
+    submit:
+      create: 'Creeaza %{model}'
+      update: 'Atualizeaza %{model}'
+      submit: 'Salveaza %{model}'
+  articles:
+    editing_article: Editeaza articol
+    listing_articles: Listeaza articole
+    new_article: Articol nou
+    article: Articol
+    create_success: Articolul a fost creat cu succes.
+    update_success: Articolul a fost actualizat cu succes.
+    destroy_success: Articolul a fost sters cu succes.
+    articles: Articole
+    notify_friend_success: Prietenul dvs. a fost informat despre acest articol
+    remove_this_image: Sterege aceasta imagine
+    draft_via_email_notice_html: |
+      <em>Stiati ca puteti trimite schite de articole prin e-mail?</em>
+      Trimiteti un e-mail la %{mailto_link} cu titlul subiectului dvs. si continutul schitei dvs. in continut
+  errors:
+    header:
+      one: "1 eroare impiedica trimiterea acestui formular"
+      other: "%{count} erori impiedica trimiterea acestui formular"
+  users:
+    new_user: Utilizator nou
+    edit_password: Editati parola
+    editing_user: Editati utilizatorul
+    create_success: Utilizatorul a fost creat cu succes.
+    update_success: Utilizatorul a fost actualizat cu succes.
+  sessions:
+    email: Email
+    password: Parola
+    login: Autentificare
+    logout: Deconectare
+    successful_login: Autentificat cu succes
+    invalid_login: Parola sau e-mail invalid
+    logout_success: V-ati deconectat cu succes
+  comments:
+    comments: Comentarii
+    new_comment: Comentariu nou
+    create_success: Va multumim pentru comentariu
+    create_failure:  Nu a fost posibil sa adaugati comentariul
+    destroy_success: Comentariul a fost sters
+    add: Adauga
+    said: a spus
+    errors:
+      not_published_yet: nepublicat inca
+
+  activerecord:
+    models:
+      article: Articol
+      user: Utilizator
+    attributes:
+      article:
+        title: Titlu
+        cover_image: Imagine de coperta
+        location: Locatie
+        excerpt: Extras
+        body: Continut
+        published_at: Publicat la
+      comment:
+        name: Nume
+        email: Email
+        body: Continut
+      user:
+        email: Email
+        password: Parola
+        password_confirmation: Confirmarea parolei
+
+
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: "nu poate fi gol"
+            body:
+              blank: "nu poate fi gol"
+            user:
+              required: trebuie sa existe
+        comment:
+          attributes:
+            name:
+              blank: "nu poate fi gol"
+            email:
+              blank: "nu poate fi gol"
+            body:
+              blank: "nu poate fi gol"
+        user:
+          attributes:
+            email:
+              too_short: "este prea scurt (%{count} caractere minimum)"
+              invalid: "este invalid"
+            password:
+              too_short: "este prea scurt (%{count} caractere minimum)"
+            password_confirmation:
+              confirmation: "nu se potrivește cu %{attribute}"
+
+  activemodel:
+    errors:
+      models:
+        email_a_friend:
+          attributes:
+            name:
+              blank: "nu poate fi gol"
+            email:
+              blank: "nu poate fi gol"
+              invalid: "este invalid"
+      template:
+        header:
+          one: "1 eroare impiedica salvarea acestui %{model}"
+          other: "%{count} erori impiedica salvarea acestui %{model}"
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %B"
+      long: "%d de %B de %Y"
+
+    day_names:
+      - Duminica
+      - Luni
+      - Marti
+      - Miercuri
+      - Joi
+      - Vineri
+      - Sambata
+    abbr_day_names:
+      - Du
+      - Lu
+      - Ma
+      - Mi
+      - Jo
+      - Vi
+      - Sa
+    month_names:
+      - Ianuari
+      - Februarie
+      - Martie
+      - Aprilie
+      - Mai
+      - Junie
+      - Julie
+      - August
+      - Septembrie
+      - Octombrie
+      - Noiembrie
+      - Decembrie
+    abbr_month_names:
+      - Ian
+      - Feb
+      - Mar
+      - Apr
+      - Mai
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Noi
+      - Dec
+    order:
+      - :day
+      - :month
+      - :year

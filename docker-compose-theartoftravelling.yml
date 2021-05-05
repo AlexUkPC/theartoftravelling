@@ -1,0 +1,31 @@
+version: "3" 
+services:
+  web_theartoftravelling:
+    image: alexrogna/theartoftravelling_web:prod
+    expose:
+      - 3000
+    env_file:
+      - .env/production/database_theartoftravelling
+      - .env/production/web_theartoftravelling
+    environment:
+      - VIRTUAL_HOST=theartoftravelling.alexrogna.com
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=theartoftravelling.alexrogna.com
+    restart: always
+
+  database_theartoftravelling:
+    image: postgres
+    env_file:
+      - .env/production/database_theartoftravelling
+    volumes:
+      - db_data_theartoftravelling:/var/lib/postgresql/data
+    restart: always
+    
+  db-migrator_theartoftravelling:
+    image: alexrogna/theartoftravelling_web:prod
+    command: ["./wait-for", "--timeout=300", "database_theartoftravelling:5432", "--", "bin/rails", "db:create" , "db:migrate"]
+    env_file:
+      - .env/production/database_theartoftravelling
+      - .env/production/web_theartoftravelling
+volumes:
+  db_data_theartoftravelling:

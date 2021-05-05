@@ -1,0 +1,45 @@
+version: "3"
+services:
+  web_theartoftravelling:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    ports:
+      - "3018:3000"
+      - "4000:4000"
+    volumes: 
+      - ./theartoftravelling:/opt/app
+      - gem_cache_theartoftravelling:/gems
+    env_file: 
+      - .env/development/database_theartoftravelling
+      - .env/development/web_theartoftravelling
+    environment: 
+      - WEBPACKER_DEV_SERVER_HOST=webpack_dev_server_theartoftravelling
+  webpack_dev_server_theartoftravelling:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    command: ./bin/webpack-dev-server
+    ports: 
+      - "3053:3053"
+    volumes: 
+      - ./theartoftravelling:/opt/app
+      - gem_cache_theartoftravelling:/gems
+    env_file: 
+      - .env/development/database_theartoftravelling
+      - .env/development/web_theartoftravelling
+    environment: 
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+  database_theartoftravelling:
+    image: postgres
+    env_file: 
+      - .env/development/database_theartoftravelling
+    volumes: 
+      - db_data_theartoftravelling:/var/lib/postgresql/data
+volumes: 
+  db_data_theartoftravelling:
+  gem_cache_theartoftravelling:

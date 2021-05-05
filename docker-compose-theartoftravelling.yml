@@ -11,6 +11,8 @@ services:
       - VIRTUAL_HOST=theartoftravelling.alexrogna.com
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=theartoftravelling.alexrogna.com
+    networks:
+      - proxy
     restart: always
 
   database_theartoftravelling:
@@ -19,6 +21,8 @@ services:
       - .env/production/database_theartoftravelling
     volumes:
       - db_data_theartoftravelling:/var/lib/postgresql/data
+    networks:
+      - proxy
     restart: always
     
   db-migrator_theartoftravelling:
@@ -27,5 +31,9 @@ services:
     env_file:
       - .env/production/database_theartoftravelling
       - .env/production/web_theartoftravelling
+    networks:
+      - proxy
 volumes:
   db_data_theartoftravelling:
+networks:
+  proxy:

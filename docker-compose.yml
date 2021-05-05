@@ -17,6 +17,8 @@ services:
       - .env/development/web_theartoftravelling
     environment: 
       - WEBPACKER_DEV_SERVER_HOST=webpack_dev_server_theartoftravelling
+    networks:
+      - network
   webpack_dev_server_theartoftravelling:
     build:
       context: .
@@ -34,12 +36,18 @@ services:
       - .env/development/web_theartoftravelling
     environment: 
       - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    networks:
+      - network
   database_theartoftravelling:
     image: postgres
     env_file: 
       - .env/development/database_theartoftravelling
     volumes: 
       - db_data_theartoftravelling:/var/lib/postgresql/data
+    networks:
+      - network
 volumes: 
   db_data_theartoftravelling:
   gem_cache_theartoftravelling:
+networks:
+  network:

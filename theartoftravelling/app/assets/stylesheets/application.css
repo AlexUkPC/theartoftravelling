@@ -53,6 +53,7 @@ a:hover{
 .alert{color: red;}
 #header, #main, #footer{
     max-width: 800px;
+    position: relative;
 }
 #header{
     font-family: "Myriad Web Pro", Helvetica, Arial, sans-serif;
@@ -78,16 +79,24 @@ a:hover{
     float: left;
     font-size: 30px;
 }
-#header h1 a{
-    color: black;
+#header p{
+    float: right;
 }
-#header h1 a:hover{
+#header img{
+    width: 150px;
+}
+#header a:hover{
     background-color: white;
     color: black;
     border-bottom: 4px solid #ccc;
 }
-#header p{
-    float: right;
+#lang-selector{
+    position: absolute;
+    right: 10px;
+    top: 35px;
+}
+#lang-selector a:hover{
+    border-bottom: none;
 }
 #main h1{
     font-size: 16px;

@@ -33,6 +33,11 @@ services:
       - .env/production/web_theartoftravelling
     networks:
       - proxy
+  redis_theartoftravelling:
+    image: redis
+    networks:
+      - proxy
+    restart: always
 volumes:
   db_data_theartoftravelling:
 networks:

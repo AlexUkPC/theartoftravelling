@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.includes(:user).with_rich_text_body.with_attached_cover_image.all.order('created_at DESC')
+    @articles = Article.includes(:user).with_rich_text_body.with_attached_cover_image.all.order('published_at DESC')
   end
   # GET /articles/1
   # GET /articles/1.json

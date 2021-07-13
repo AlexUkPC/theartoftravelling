@@ -52,7 +52,7 @@ a:hover{
 .notice{color: green;}
 .alert{color: red;}
 #header, #main, #footer{
-    max-width: 800px;
+    max-width: 1024px;
     position: relative;
 }
 #header{
@@ -172,6 +172,10 @@ a:hover{
 #main h3:hover .actions{
     display: inline;
 }
+#main .article img{
+    width: 100%;
+}
+
 .field_with_errors{
     display: table;
     float: left;

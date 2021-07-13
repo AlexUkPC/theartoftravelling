@@ -1,7 +1,7 @@
 <div class="article">
   <h3>
     <%= link_to article.title, article %>
-    <%= verbose_date(article.created_at) %>
+    <%= verbose_date(article.published_at) %>
     <% if article.owned_by? current_user %>
         <span class="actions">
             <%= link_to 'Edit', edit_article_path(article) %>
@@ -19,5 +19,10 @@
         <% end %>
     </div>
     <hr>
-  <%= article.excerpt %>
+    <% if current_page?(root_path) %>
+        <%= article.excerpt %>
+    <% else %>
+        <%= article.body %>
+    <% end %>
+  
 </div>

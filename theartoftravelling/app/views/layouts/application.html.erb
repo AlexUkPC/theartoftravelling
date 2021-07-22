@@ -8,12 +8,13 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('theartoftravelling-favicon-192x192.png') %>
   </head>
 
   <body>
     <div id="header">
       <%= link_to root_path do %>
-        <%= image_tag 'TheArtOfTravelling-logo-black.svg', alt: 'The Art of Travelling' %> 
+        <%= image_tag 'theartoftravelling-logo-black-text-1000x275.svg', alt: 'The Art of Travelling' %> 
       <% end %>
       <div id="lang-selector">
         <%= language_selector %>
